@@ -1,0 +1,10 @@
+store:
+  url: https://test.mytheresa.com/de_en
+  page:
+    login: "${store.url}/en-de/customer/account/login"
+    account: "${store.url}/en-de/customer/account/index"
+    men: "${store.url}/en-de/men.html"
+    women: "${store.url}/en-de/women.html"
+  users:
+    - username: "tolkachev75@maildrop.cc" #test owner
+      password: "E2dR9hMWLpzXx@!" #we can use a secure storage or an env var

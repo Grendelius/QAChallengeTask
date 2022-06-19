@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: prod
+  application:
+    name: QA Challenge
+  main:
+    banner-mode: off
+
+core:
+  browser:
+    type: chrome
+    size: 1920x1080
+    headless: true
+    timeout: 10000
+  allure:
+    page-source: false
+    browser-logs: false
+  validator:
+    all-links-to-check: false
+  github:
+    url: https://api.github.com/repos
+    owner: appwrite
+    repo: appwrite
