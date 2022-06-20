@@ -1,6 +1,6 @@
 package com.qa.task.page;
 
-import com.qa.task.page.header.PageHeader;
+import com.qa.task.page.navigator.NavigatorPanel;
 import org.openqa.selenium.By;
 
 import java.util.Map;
@@ -12,8 +12,10 @@ public class BasePage extends AbstractPage {
         return Map.of();
     }
 
-    public PageHeader pageHeader() {
-        return new PageHeader();
+    private final NavigatorPanel navigatorPanel = new NavigatorPanel();
+
+    public NavigatorPanel pageHeader() {
+        return navigatorPanel;
     }
 
 }

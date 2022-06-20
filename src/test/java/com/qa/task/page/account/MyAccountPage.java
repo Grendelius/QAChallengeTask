@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.qa.task.page.BasePage;
 import org.openqa.selenium.By;
 
+import java.util.Map;
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class MyAccountPage extends BasePage {
@@ -14,4 +16,8 @@ public class MyAccountPage extends BasePage {
         $(welcomeMsg).shouldBe(Condition.visible);
     }
 
+    @Override
+    protected Map<String, By> controls() {
+        return Map.of();
+    }
 }

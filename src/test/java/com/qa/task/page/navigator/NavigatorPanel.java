@@ -1,9 +1,6 @@
-package com.qa.task.page.header;
+package com.qa.task.page.navigator;
 
 import com.qa.task.page.AbstractPage;
-import com.qa.task.page.gender.MenPage;
-import com.qa.task.page.gender.WomenPage;
-import com.qa.task.page.login.LoginPage;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 
@@ -11,20 +8,17 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class PageHeader {
+public class NavigatorPanel {
 
-    private static final By womenSelector = By.xpath("//li[@data-id='21143']");
-    private static final By menSelector = By.xpath("//li[@data-id='20795']");
-
-    private static final By MyAccountBtn = By.id("myaccount");
+    private static final By newArrivals = By.xpath("//a[@href = 'New Arrivals']");
+    private static final By designers = By.xpath("//a[@href = 'Designers']");
 
     private final List<Selector<?>> selectors;
 
-    public PageHeader() {
+    public NavigatorPanel() {
         selectors = List.of(
-                new Selector<>("Men", menSelector, new MenPage()),
-                new Selector<>("Women", womenSelector, new WomenPage()),
-                new Selector<>("My Account", MyAccountBtn, new LoginPage())
+                new Selector<>("New Arrivals", newArrivals, new NewArrivalsPanel()),
+                new Selector<>("Designers", designers, new DesignersPanel())
         );
     }
 

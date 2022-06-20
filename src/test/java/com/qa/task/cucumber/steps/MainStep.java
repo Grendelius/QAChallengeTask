@@ -1,8 +1,6 @@
 package com.qa.task.cucumber.steps;
 
-import com.qa.task.page.header.PageHeader;
-import com.qa.task.validation.Validator;
-import io.cucumber.java.ParameterType;
+import com.qa.task.page.navigator.NavigatorPanel;
 import io.cucumber.java.en.Step;
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,7 +34,7 @@ public class MainStep extends BaseStep {
 
     @Step("user click on {string} domain")
     public void openDomain(String name) {
-        PageHeader menu = currentPage().pageHeader();
+        NavigatorPanel menu = currentPage().pageHeader();
         currentDomain(menu.navigateTo(name));
     }
 
