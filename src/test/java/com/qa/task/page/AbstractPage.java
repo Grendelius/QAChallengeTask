@@ -13,8 +13,6 @@ public abstract class AbstractPage {
 
     protected abstract Map<String, By> controls();
 
-    public abstract List<String> hrefs();
-
     public static WebDriver driver() {
         return WebDriverRunner.getWebDriver();
     }

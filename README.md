@@ -22,3 +22,8 @@ _By default, the tests run against Prod environment_
 - Test reports directory: `/target/allure-reports`
 - To create a readable html report: `mvn allure:report`
 - To create a report and open it in a local web service: `mvn allure:serve`
+
+
+#### Cross-browser support
+
+- Setup browser with the parameter: `-Dcore.browser.type=browser`. Options: firefox, opera, chrome, edge, safari
