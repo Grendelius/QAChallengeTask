@@ -46,7 +46,7 @@ class HttpLinkValidator implements ContentDataValidator {
                     log.info("Got status: {}", status);
                     softAssert
                             .assertThat(status)
-                            .as("Request GET %s got a positive status", head.getRequestUri())
+                            .as("Request HEAD %s got a positive status", head.getRequestUri())
                             .satisfies(new Condition<>(rc -> rc >= SC_SUCCESS && rc <= SC_PERMANENT_REDIRECT, "status between 200 and 308"));
                     return "";
                 });
