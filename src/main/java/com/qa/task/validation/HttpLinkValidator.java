@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpHead;
 import org.assertj.core.api.Condition;
 import org.assertj.core.api.SoftAssertions;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,20 +38,20 @@ class HttpLinkValidator implements ContentDataValidator {
         SoftAssertions softAssert = new SoftAssertions();
 
         pageLinks.subList(0, allLinksToCheck ? pageLinks.size() - 1 : 20).parallelStream().forEach(link -> {
-            HttpGet get = new HttpGet(link);
-            log.info("Executing request: {}", get.getRequestUri());
+            HttpHead head = new HttpHead(link);
+            log.info("Executing HEAD request: {}", head.getRequestUri());
             try {
-                httpClient.execute(get, response -> {
+                httpClient.execute(head, response -> {
                     int status = response.getCode();
                     log.info("Got status: {}", status);
                     softAssert
                             .assertThat(status)
-                            .as("Request GET %s got a positive status", get.getRequestUri())
+                            .as("Request GET %s got a positive status", head.getRequestUri())
                             .satisfies(new Condition<>(rc -> rc >= SC_SUCCESS && rc <= SC_PERMANENT_REDIRECT, "status between 200 and 308"));
                     return "";
                 });
             } catch (Exception e) {
-                log.error("Error GET by {}", link, e);
+                log.error("Error HEAD by {}", link, e);
             }
         });
         softAssert.assertAll();
